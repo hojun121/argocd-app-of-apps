@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tomcat
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  
+  
+spec:
+  project: default
+  source:
+    path: charts/tomcat
+    repoURL: https://github.com/hojun121/argocd-app-of-apps.git
+    targetRevision: HEAD
+
+  destination:
+    namespace: tomcat
+    server: "https://kubernetes.default.svc"
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      
