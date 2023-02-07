@@ -42,10 +42,6 @@ spec:
             value: {{ .Values.modules.efk.kibana.svcType }}
           - name: gatekeeper_image_tag
             value: {{ .Values.modules.efk.gatekeeper.version }}
-          - name: tmax_client_secret
-            value: {{ include "hyperAuth.tmaxClientSecret" . }}
-          - name: hyperauth_url
-            value: {{ include "hyperAuth.domain" . }}
           - name: custom_domain_name
             value: {{ .Values.global.domain }}
           - name: fluentd_image_tag
