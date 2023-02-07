@@ -1,0 +1,38 @@
+{{ if .Values.modules.tsb.enabled }}
+{{ $isMaster := eq .Values.global.cluster "master" }}
+{{ $prefix := printf "%s-%s" .Values.global.clusterNamespace .Values.global.clusterName }}
+{{ $module := "template-service-broker" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    cluster: {{ ternary "master" $prefix $isMaster }}
+  name: {{ ternary $module (printf "%s-%s" $prefix $module) $isMaster }}
+  namespace: argocd
+spec:
+  destination:
+    name: {{ .Values.global.clusterName }}
+    namespace: template
+  project: {{ .Values.spec.project }}
+  source:
+    directory:
+      jsonnet:
+        tlas:
+          - name: is_offline
+            value: "{{ .Values.global.network.disabled }}"
+          - name: private_registry
+            value: {{ .Values.global.privateRegistry }}
+          - name: template_operator_version
+            value: {{ .Values.modules.tsb.templateOperator.version }}
+          - name: cluster_tsb_version
+            value: {{ .Values.modules.tsb.clusterTsb.version }}
+          - name: tsb_version
+            value: {{ .Values.modules.tsb.version }}
+          - name: time_zone
+            value: {{ .Values.global.timeZone }}
+          - name: log_level
+            value: {{ .Values.modules.tsb.logLevel}}
+    path: manifest/template-service-broker
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+{{ end }}
