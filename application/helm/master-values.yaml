@@ -13,27 +13,7 @@ global:
   domain: testdomain.com
 
 modules:
-  ### efk
-  efk:
-    enabled: false
-    es:
-      version: 7.2.1
-      limitMemory: 8Gi
-      requestMemory: 5Gi
-      jvmHeap: "-Xms4g -Xmx4g"
-      volumeSize: 50Gi
-    busyBox:
-      version: 1.32.0
-    kibana:
-      version: 7.2.0
-      svcType: ClusterIP
-      subdomain: kibana
-    gatekeeper:
-      version: 10.0.0
-    fluentd:
-      version: v1.4.2-debian-elasticsearch-1.1
-     
-  ### Loki
+  ## Loki
   loki:
     enabled: true
     logLevel: info

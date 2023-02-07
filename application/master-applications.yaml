@@ -18,9 +18,7 @@ spec:
         - master-values.yaml
       parameters:
         - name: global.domain
-          value: "testdomain.com"
-        - name: spec.source.targetRevision
-          value: "main"
+          value: "nhn.com"
     path: application/helm
     repoURL: https://github.com/hojun121/argocd-app-of-apps
     targetRevision: HEAD
