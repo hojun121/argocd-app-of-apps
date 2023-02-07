@@ -18,9 +18,9 @@ spec:
         - master-values.yaml
       parameters:
         - name: global.domain
-          value: "글로벌 도메인을 입력하세요 ex) testdomain.com"
+          value: "testdomain.com"
         - name: spec.source.targetRevision
-          value: "target Revision을 입력하세요 ex) main"
+          value: "main"
     path: application/helm
     repoURL: https://github.com/hojun121/argocd-app-of-apps
     targetRevision: HEAD

@@ -5,10 +5,7 @@ spec:
   project: default
 
 global:
-  # 기본시나리오에서는 privateRegistry값만 변경해주면 된다
-  # e.x) 172.22.6.2:5000 or hyperregistry.domain.com
   privateRegistry: test-registry.com
-  # 값 변경 필요 없음
   adminUser: test@test.co.kr
   cluster: master
   clusterName: in-cluster
@@ -36,30 +33,6 @@ modules:
     fluentd:
       version: v1.4.2-debian-elasticsearch-1.1
      
-  ### opensearch
-  opensearch:
-    enabled: true
-    logLevel: info
-    # opensearch-dashboards에서 지원하는 loglevel에 대한 config 설정을 기준으로 함.
-    # 사용 가능한 값 : error, info, debug
-    os:
-      version: 1.3.7
-      limitMemory: 8Gi
-      requestMemory: 5Gi
-      jvmHeap: "-Xms4g -Xmx4g"
-      volumeSize: 50Gi
-    busyBox:
-      version: 1.32.0
-    dashboard:
-      version: 1.3.7
-      svcType: ClusterIP
-      subdomain: opensearch-dashboard
-    fluentd:
-      version: fluentd-v1.15.3-debian-elasticsearch-1.0
-      # default로 주는 경우 default storage class를 사용
-      # default를 사용하지 않고 싶은 경우에는 storage class이름을 기입
-      storageClass: default
-  
   ### Loki
   loki:
     enabled: true

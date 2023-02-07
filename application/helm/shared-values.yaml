@@ -1,17 +1,10 @@
 spec:
   source:
-    repoURL: https://github.com/hojun121/argocd-app-of-apps.git
+    repoURL: https://github.com/hojun121/argocd-app-of-apps
     targetRevision: HEAD
     
 global:
   timeZone: UTC
   network:
     disabled: false
-
-  masterSingle:
-    enabled: true
-    hyperAuthDomain: "hyperauth.testdomain.com"
-    tmaxClientSecret: tmax_client_secret
-
-
  
