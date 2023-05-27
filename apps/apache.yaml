@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
+  name: apache
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io  
@@ -9,17 +9,18 @@ metadata:
 spec:
   project: default
   source:
-    path: apps
+    path: charts/apache
     repoURL: https://github.com/hojun121/argocd-app-of-apps.git
     targetRevision: HEAD
 
   destination:
-    namespace: default
+    namespace: apache
     server: "https://kubernetes.default.svc"
 
   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
+    automated:
+      prune: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      
