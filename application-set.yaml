@@ -24,7 +24,7 @@ spec:
 
       source:
         repoURL: https://github.com/hojun121/argocd-app-of-apps.git
-        targetRevision: HEAD
+        targetRevision: master
         path: charts/{{app}}
 
       destination:
