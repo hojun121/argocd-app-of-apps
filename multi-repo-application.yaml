@@ -16,7 +16,7 @@ spec:
     namespace: nginx
   sources:
     - repoURL: https://github.com/hojun121/argocd-app-of-apps.git  # path is missing so no manifests are generated
-      targetRevision: HEAD
+      targetRevision: master
       ref: myRepo                                         # repo is available via symlink "myRepo"
     - repoURL: https://github.com/bitnami/charts.git
       targetRevision: HEAD
