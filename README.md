@@ -1,6 +1,6 @@
 # argocd-demo
 
-DevOps Team 내부 교육용 레포지터리입니다.
+DevOps 역량 강화를 위한 App-of-Apps 패턴 연습 레포입니다.
 
 
 
